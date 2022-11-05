@@ -437,6 +437,24 @@ namespace ConsoleApp1.gfg.Array.Matrix
             return result;
         }
 
+        public bool IsToeplitzMatrix(int[][] matrix)
+        {
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    if (i < rows - 1 && j < cols - 1 && matrix[i][j] != matrix[i + 1][j + 1])
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
         private void PrintMatrix(int[,] matrix)
         {
             int row = matrix.GetLength(0);

@@ -313,9 +313,9 @@ namespace DSPractice.gfg.Hashing
                     name = item.Key;
                     vote = item.Value;
                 }
-                if(item.Value == vote)
+                if (item.Value == vote)
                 {
-                    if(string.Compare(name, item.Key) > 0)
+                    if (string.Compare(name, item.Key) > 0)
                     {
                         name = item.Key;
                         vote = item.Value;
@@ -324,6 +324,157 @@ namespace DSPractice.gfg.Hashing
             }
 
             return new List<string>() { name, vote.ToString() };
+        }
+
+        public int LargestSubArrayWithGivenSum(int[] arr, int sum, int n)
+        {
+            int length = -1;
+            int prefixSum = 0;
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            for (int i = 0; i < n; i++)
+            {
+                prefixSum += arr[i];
+                if (prefixSum == sum)
+                {
+                    length = Math.Max(length, i + 1);
+                }
+                if (!dict.ContainsKey(prefixSum))
+                {
+                    dict.Add(prefixSum, i);
+                }
+                if (dict.ContainsKey(prefixSum - sum))
+                {
+                    length = Math.Max(length, i - dict[prefixSum - sum]);
+                }
+            }
+
+            return length;
+        }
+
+        //Function to return the name of candidate that received maximum votes.
+        //Function to count the number of subarrays which adds to the given sum.
+        public int subArraySum(int[] arr, int n, int sum)
+        {
+            int preSum = 0;
+            int count = 0;
+            Dictionary<int, int> map = new Dictionary<int, int>();
+
+            for (int i = 0; i < n; i++)
+            {
+                preSum += arr[i];
+
+                /// if a sub array starting fro 0 index equal to sum then add it to count
+                if (preSum == sum)
+                {
+                    count++;
+                }
+                /// presum -x =sum
+                /// x = presum- sum
+                ///  there is a subarray that if we remove from the presum then it will be equal to sum
+                ///  so we will increase the count by number of this type of array
+                if (map.ContainsKey(preSum - sum))
+                {
+                    count += map[preSum - sum];
+                }
+                if (map.ContainsKey(preSum))
+                {
+                    map[preSum]++;
+                }
+                else
+                {
+                    map[preSum] = 1;
+                }
+
+            }
+            return count;
+        }
+
+        public int LongestCommonSubSequence(int[] arr)
+        {
+            int result = 1;
+
+            HashSet<int> set = new HashSet<int>();
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                set.Add(arr[i]);
+            }
+
+            foreach (int item in set)
+            {
+                if (!set.Contains(item - 1))
+                {
+                    int count = 1;
+                    while (set.Contains(item + count))
+                    {
+                        count++;
+                    }
+                    result = Math.Max(result, count);
+                }
+            }
+
+            return result;
+        }
+
+        //Function to count subarrays with sum equal to 0.
+        public long findSubarray(long[] arr)
+        {
+            Dictionary<long, long> map = new Dictionary<long, long>();
+            long count = 0;
+            long prefixSum = 0;
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                prefixSum += arr[i];
+                if (prefixSum == 0)
+                {
+                    count++;
+                }
+                if (map.ContainsKey(prefixSum))
+                {
+                    count += map[prefixSum];
+                    map[prefixSum]++;
+                }
+                else
+                {
+                    map[prefixSum] = 1;
+                }
+            }
+
+
+            return count;
+        }
+
+        public int ToggleMiddleBit(int N)
+        {
+            int x = 0, lastSetBit = 0;
+            int temp = N;
+
+            while (temp > 0)
+            {
+                lastSetBit++;
+                temp >>= 1;
+            }
+            int bitToSet = lastSetBit / 2;
+            while (bitToSet > 0)
+            {
+                x = x << 1;
+                bitToSet--;
+            }
+            if (lastSetBit % 2 == 0)
+            {
+
+                N = N ^ x;
+                x = x << 1;
+                N = N ^ x;
+
+            }
+            else
+            {
+                x = x << 1;
+                N = N ^ x;
+            }
+            return N;
         }
     }
 }
