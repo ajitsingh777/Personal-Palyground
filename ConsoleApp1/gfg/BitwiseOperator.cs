@@ -181,12 +181,12 @@ namespace ConsoleApp1.gfg
             {
                 return 0;
             }
-            int pos = 0;
+            n = n & (~(n - 1));
+            int pos = 1;
             while (n > 0)
             {
                 if ((n & 1) == 1)
                 {
-                    pos++;
                     return pos;
                 }
                 pos++;

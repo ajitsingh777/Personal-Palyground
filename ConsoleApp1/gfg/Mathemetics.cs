@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp1.gfg
+﻿namespace ConsoleApp1.gfg
 {
     internal class Mathemetics
     {
@@ -114,6 +106,86 @@ namespace ConsoleApp1.gfg
                 }
             }
         }
+
+        public int digitsInFactorial(int n)
+        {
+            double digits = 0;
+
+            if (n < 0)
+            {
+                return 0;
+            }
+            if (n <= 1)
+            {
+                return 1;
+            }
+
+            for (int i = 2; i <= n; i++)
+            {
+                digits += Math.Log10(i);
+            }
+
+            return (int)Math.Floor(digits) + 1;
+        }
+
+        public double termOfGP(int A, int B, int N)
+        {
+            if (N == 1)
+            {
+                return A;
+            }
+            double ratio = (double)B / A;
+            double term = 1.0;
+            N -= 1;
+
+            while (N > 0)
+            {
+
+                if (N % 2 != 0)
+                {
+                    term = term * ratio;
+                }
+                ratio *= ratio;
+                N /= 2;
+            }
+
+            return term * A;
+        }
+
+        public int isPrime2(int n)
+        {
+            if (n == 1) return 0;
+            if (n == 2 || n == 3) return 1;
+            if (n % 2 == 0 || n % 3 == 0) return 0;
+            for (int i = 5; i * i <= n; i += 6)
+            {
+                if (n % i == 0 || n % (i + 2) == 0) return 0;
+            }
+            return 1;
+
+        }
+
+        /// <summary>
+        /// https://practice.geeksforgeeks.org/batch/dsa-4/track/DSASP-Mathematics/problem/exactly-3-divisors
+        /// only numbers that are perfect square of prime number have exactly 3 divisors
+        /// like 9(3*3),4(2*2), 25(5*5)
+        /// </summary>
+        /// <param name="N"></param>
+        /// <returns></returns>
+        public int exactly3Divisors(int N)
+        {
+            int count = 0;
+
+            for (int i = 2; i * i <= N; i++)
+            {
+                if (isPrime(i))
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
 
     }
 

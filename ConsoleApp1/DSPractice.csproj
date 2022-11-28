@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="gfg\stringsProblems\Problems\" />
+    <Folder Include="gfg\LinkedList\Practice\" />
   </ItemGroup>
 
 </Project>

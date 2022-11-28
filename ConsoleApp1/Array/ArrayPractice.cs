@@ -83,7 +83,7 @@ namespace ConsoleApp1.Array
         }
         #endregion
 
-        #region rotate array by ke(lef or right)
+        #region rotate array by k(left or right)
 
         /// <summary>
         /// to left shift array by k first reverse first k elements, 

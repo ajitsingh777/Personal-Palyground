@@ -12,24 +12,6 @@ namespace ConsoleApp1.gfg.Array
 {
     internal class ArrrayGfgPractice
     {
-        internal int RemoveDuplicateFromSortedArray(int[] arr)
-        {
-            int start = 0, current = 0;
-            while (current < arr.Length)
-            {
-                while (current < arr.Length - 1 && arr[current] == arr[current + 1])
-                {
-                    current++;
-                }
-                if (current < arr.Length - 1)
-                {
-                    arr[++start] = arr[current + 1];
-                }
-                current++;
-            }
-            return start;
-
-        }
 
         internal int RemoveDuplicateFromSortedArray_approach2(int[] arr)
         {
@@ -46,6 +28,21 @@ namespace ConsoleApp1.gfg.Array
 
             // add +1 as it's zero based index
             return start + 1;
+        }
+
+        internal void MoveZeroesAtTheEnd(int[] arr)
+        {
+            int nonZeroCount = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] != 0)
+                {
+                    int temp = arr[i];
+                    arr[i] = arr[nonZeroCount];
+                    arr[nonZeroCount] = temp;
+                    nonZeroCount++;
+                }
+            }
         }
 
         /// <summary>
@@ -706,6 +703,54 @@ namespace ConsoleApp1.gfg.Array
                 return a;
             }
             return GCD(b, a % b);
+        }
+
+        /// <summary>
+        /// https://practice.geeksforgeeks.org/batch/dsa-4/track/DSASP-Arrays/video/NzAyMw%3D%3D
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public int MaximumSubArraySumWithLengthK(int[] arr, int k)
+        {
+            int current_sum = 0, max_Sum = 0;
+            int i = 0;
+            for (; i < k; i++)
+            {
+                current_sum += arr[i];
+            }
+            max_Sum = current_sum;
+            for (; i < arr.Length; i++)
+            {
+                current_sum = current_sum - arr[i - k] + arr[i];
+                max_Sum = Math.Max(current_sum, max_Sum);
+            }
+            return max_Sum;
+        }
+
+        /// <summary>
+        /// https://practice.geeksforgeeks.org/batch/dsa-4/track/DSASP-Arrays/video/NzAyNA%3D%3D
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="sum"></param>
+        /// <returns></returns>
+        public bool SubArrayWithGivenSum2(int[] arr, int sum)
+        {
+            int curr_Sum = 0; int prev = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                curr_Sum += arr[i];
+                while (prev < arr.Length && curr_Sum > sum)
+                {
+                    curr_Sum -= arr[prev++];
+                }
+
+                if (curr_Sum == sum)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
