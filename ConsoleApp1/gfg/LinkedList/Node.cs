@@ -9,7 +9,7 @@ namespace DSPractice.gfg.LinkedList
     public class Node
     {
         public int data;
-        public Node? next;
+        public Node next;
 
         public Node(int value)
         {
@@ -26,6 +26,16 @@ namespace DSPractice.gfg.LinkedList
         {
             data = value;
         }
+    }
 
+    public class NodeWithRandom
+    {
+        public int data;
+        public NodeWithRandom next;
+        public NodeWithRandom random;
+        public NodeWithRandom(int value)
+        {
+            data = value;
+        }
     }
 }
