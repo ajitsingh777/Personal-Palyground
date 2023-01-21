@@ -11,30 +11,25 @@ using DSPractice.gfg.Hashing;
 using DSPractice.gfg.LinkedList;
 using DSPractice.gfg.LinkedList.Problems;
 using DSPractice.gfg.LinkedList.Videos;
+using DSPractice.gfg.Stack.Video;
 using DSPractice.gfg.stringsProblems.Problems;
 using DSPractice.gfg.stringsProblems.videos;
-using DSPractice.LeetCode_Practice.Array;
-using DSPractice.Oops;
+using DSPractice.gfg.Tree;
+using DSPractice.gfg.Tree.Videos;
 
 internal class Program
 {
 
     private static void Main(string[] args)
     {
-        Node head = null;
-        head = SimpleLinkedListImplementation.InsertAtEnd(head, 1);
-        head = SimpleLinkedListImplementation.InsertAtEnd(head, 2);
-        head = SimpleLinkedListImplementation.InsertAtEnd(head, 3);
-        head = SimpleLinkedListImplementation.InsertAtEnd(head, 7);
-        head = SimpleLinkedListImplementation.InsertAtEnd(head, 16);
-        Node head2 = null;
-        head2 = SimpleLinkedListImplementation.InsertAtEnd(head2, 2);
-        head2 = SimpleLinkedListImplementation.InsertAtEnd(head2, 5);
-        head2 = SimpleLinkedListImplementation.InsertAtEnd(head2, 6);
+        ConvertTreeIntoDoublyLinkedList convertTreeIntoDoublyLinkedList = new ConvertTreeIntoDoublyLinkedList();
+        DSPractice.gfg.Tree.Node node = new DSPractice.gfg.Tree.Node(10);
+        node.left = new DSPractice.gfg.Tree.Node(5);
+        node.right = new DSPractice.gfg.Tree.Node(20);
+        node.right.left = new DSPractice.gfg.Tree.Node(30);
+        node.right.right = new DSPractice.gfg.Tree.Node(35);
 
-        MergeTwoSortedLinkedList reverseLinkedList = new MergeTwoSortedLinkedList();
-
-        reverseLinkedList.Merge(head, head2);
+        DoublyNode doublyNode = convertTreeIntoDoublyLinkedList.ConvertToDoubly(node);
 
         Console.ReadLine();
     }
