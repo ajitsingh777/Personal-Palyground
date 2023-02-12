@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSPractice.gfg.Tree
 {
-    internal class Node
+    public class Node
     {
         public int key;
         public Node left;

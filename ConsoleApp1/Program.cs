@@ -1,20 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using ConsoleApp1;
-using ConsoleApp1.gfg;
-using ConsoleApp1.gfg.Array;
-using ConsoleApp1.gfg.Array.Matrix;
-using ConsoleApp1.gfg.Re_practice;
-using ConsoleApp1.gfg.Sorting;
 
-using DSPractice.gfg.Hashing;
-using DSPractice.gfg.LinkedList;
-using DSPractice.gfg.LinkedList.Problems;
-using DSPractice.gfg.LinkedList.Videos;
-using DSPractice.gfg.Stack.Video;
-using DSPractice.gfg.stringsProblems.Problems;
-using DSPractice.gfg.stringsProblems.videos;
 using DSPractice.gfg.Tree;
+using DSPractice.gfg.Tree.Problems;
 using DSPractice.gfg.Tree.Videos;
 
 internal class Program
@@ -22,14 +11,19 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        ConvertTreeIntoDoublyLinkedList convertTreeIntoDoublyLinkedList = new ConvertTreeIntoDoublyLinkedList();
-        DSPractice.gfg.Tree.Node node = new DSPractice.gfg.Tree.Node(10);
-        node.left = new DSPractice.gfg.Tree.Node(5);
-        node.right = new DSPractice.gfg.Tree.Node(20);
-        node.right.left = new DSPractice.gfg.Tree.Node(30);
-        node.right.right = new DSPractice.gfg.Tree.Node(35);
 
-        DoublyNode doublyNode = convertTreeIntoDoublyLinkedList.ConvertToDoubly(node);
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+        root.right.right = new Node(7);
+        root.right.left.right = new Node(8);
+        root.right.right.right = new Node(9);
+
+        VerticalWidthOfTree verticalWidthOfTree = new VerticalWidthOfTree();
+        Console.WriteLine(verticalWidthOfTree.verticalWidth(root));
 
         Console.ReadLine();
     }
