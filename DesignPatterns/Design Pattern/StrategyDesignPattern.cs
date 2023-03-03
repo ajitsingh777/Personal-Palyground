@@ -54,10 +54,15 @@ namespace DesignPatterns.Design_Pattern
 
     public class Vehicle
     {
-        private readonly IDriveStrategy driveStrategy;
+        private IDriveStrategy driveStrategy;
         public Vehicle(IDriveStrategy driveStrategy)
         {
             this.driveStrategy = driveStrategy;
+        }
+
+        public void SetStrategy(IDriveStrategy strategy)
+        {
+            this.driveStrategy = strategy;
         }
 
         public void Drive()
@@ -112,8 +117,10 @@ namespace DesignPatterns.Design_Pattern
             vehicle.Drive();
             vehicle = new NormalVehicle(new NormalDriveStartegy());
             vehicle.Drive();
+            vehicle.SetStrategy(new SpecialDriveStartegy());
+            vehicle.Drive();
         }
 
-    } 
+    }
     #endregion
 }
