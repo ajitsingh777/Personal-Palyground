@@ -1,8 +1,4 @@
-﻿
-
-using System.Runtime.CompilerServices;
-
-namespace DesignPatterns.Design_Pattern
+﻿namespace DesignPatterns.Design_Pattern
 {
     #region Description
     /*

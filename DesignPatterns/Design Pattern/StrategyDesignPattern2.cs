@@ -49,6 +49,34 @@ namespace DesignPatterns.Design_Pattern
         }
     }
 
+    class MultiplyStrategy : IStrategy
+    {
+        public int Execute(int a, int b)
+        {
+            return a * b;
+        }
+    }
+
+    class DivideStrategy : IStrategy
+    {
+        public int Execute(int a, int b)
+        {
+            try
+            {
+                return a / b;
+            }
+            catch (DivideByZeroException ex)
+            {
+                throw new DivideByZeroException("Cannot deivide by zero", ex);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+    }
+
     class Context
     {
         private IStrategy _strategy;
@@ -67,7 +95,7 @@ namespace DesignPatterns.Design_Pattern
         {
             return _strategy.Execute(a, b);
         }
-    } 
+    }
     #endregion
 
 }

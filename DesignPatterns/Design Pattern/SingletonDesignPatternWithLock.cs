@@ -38,10 +38,8 @@
         {
 
         }
-        /// <summary>
-        /// lazy is thread safe so need to acquire lock
-        /// </summary>
-        private static MySingletonObjectWithLock _instance = null;
+
+        private static MySingletonObjectWithLock? _instance = null;
         private static readonly object _instanceLock = new object();
         public static MySingletonObjectWithLock Instance
         {

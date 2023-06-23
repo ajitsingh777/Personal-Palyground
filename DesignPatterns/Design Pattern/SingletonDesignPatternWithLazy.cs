@@ -32,8 +32,14 @@
     #endregion
 
     #region Implementation
+    /// <summary>
+    /// sealed class so it should not be inherited
+    /// </summary>
     public sealed class MySingletonObject
     {
+        /// <summary>
+        /// private constructor , so it should intialize from outside
+        /// </summary>
         private MySingletonObject()
         {
 
@@ -43,6 +49,7 @@
         /// </summary>
         private static readonly Lazy<MySingletonObject> lazy = new Lazy<MySingletonObject>(() => new MySingletonObject());
         public static MySingletonObject Instance => lazy.Value;
+
     }
     #endregion
 }
